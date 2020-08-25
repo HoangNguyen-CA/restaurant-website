@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import UserAuth from '../../components/Templates/UserAuth';
+import FirebaseContext from '../../firebase/FirebaseContext';
 
 export class Signup extends Component {
+  static contextType = FirebaseContext;
+
   state = {
     controls: {
       Name: {
@@ -34,13 +37,15 @@ export class Signup extends Component {
     this.setState({ controls: updatedControls });
   };
 
-  handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(
-      this.state.controls.Name.value,
+    const firebase = this.context;
+
+    let cred = await firebase.auth.createUserWithEmailAndPassword(
       this.state.controls.Email.value,
       this.state.controls.Password.value
     );
+    console.log(cred);
   };
 
   render() {

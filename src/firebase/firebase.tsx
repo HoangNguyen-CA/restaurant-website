@@ -13,7 +13,17 @@ const firebaseConfig = {
   measurementId: 'G-Q42HGTDHE2',
 };
 
-firebase.initializeApp(firebaseConfig);
-firebase.firestore();
+class Firebase {
+  auth: any;
+  db: any;
+  constructor() {
+    if (firebase.apps.length === 0) {
+      firebase.initializeApp(firebaseConfig);
+      firebase.firestore();
+    }
 
-export default firebase;
+    this.auth = firebase.auth();
+    this.db = firebase.firestore();
+  }
+}
+export default Firebase;
