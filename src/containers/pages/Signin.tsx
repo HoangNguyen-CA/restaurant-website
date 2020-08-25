@@ -5,12 +5,12 @@ import UserAuth from '../../components/Templates/UserAuth';
 export class Signin extends Component {
   state = {
     controls: {
-      email: {
+      Email: {
         type: 'input',
         config: {},
         value: '',
       },
-      password: {
+      Password: {
         type: 'input',
         config: {},
         value: '',
@@ -18,7 +18,7 @@ export class Signin extends Component {
     },
   };
 
-  handleOnChange = (e: Event, controlName: 'password' | 'email') => {
+  handleOnChange = (e: Event, controlName: 'Password' | 'Email') => {
     const updatedControls: any = {
       ...this.state.controls,
       [controlName]: {
