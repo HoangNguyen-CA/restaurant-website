@@ -8,13 +8,29 @@ import { ThemeProvider } from 'styled-components';
 
 import { BrowserRouter as Router } from 'react-router-dom';
 
+import { createStore, applyMiddleware, compose } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+
+import rootReducer from './reducers/index';
+
+const composeEnhancers = compose;
+
+const middleware = [thunk];
+const store = createStore(
+  rootReducer,
+  composeEnhancers(applyMiddleware(...middleware))
+);
+
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <ThemeProvider theme={theme}>
-        <App />
-      </ThemeProvider>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
+      </Router>
+    </Provider>
   </React.StrictMode>,
 
   document.getElementById('root')
