@@ -18,8 +18,9 @@ import { FirebaseProvider } from './firebase/FirebaseContext';
 /*
  Redux Store 
 */
-
-const composeEnhancers = compose;
+//@ts-ignore
+const devTools: any = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+const composeEnhancers = devTools || compose;
 
 const middleware = [thunk];
 const store = createStore(
