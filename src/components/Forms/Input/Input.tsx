@@ -1,11 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const Container = styled.div``;
-
-const Label = styled.label``;
-
-const StyledInput = styled.input<any>``;
+import TextField from '@material-ui/core/TextField';
+import InputLabel from '@material-ui/core/InputLabel';
+import Typography from '@material-ui/core/Typography';
 
 interface InputProps {
   type: string;
@@ -21,20 +17,20 @@ const Input = ({ type, label, config, value, onChange }: InputProps) => {
   switch (type) {
     case 'input' as string:
       inputElement = (
-        <StyledInput {...config} value={value} onChange={onChange} />
+        <TextField {...config} value={value} onChange={e => onChange(e)} />
       );
       break;
     default:
       inputElement = (
-        <StyledInput {...config} value={value} onChange={onChange} />
+        <TextField {...config} value={value} onChange={e => onChange(e)} />
       );
   }
 
   return (
-    <Container>
-      <Label>{label}</Label>
-      {inputElement}
-    </Container>
+    <div>
+      <InputLabel>{label}</InputLabel>
+      <Typography component={'span'}>{inputElement}</Typography>
+    </div>
   );
 };
 
