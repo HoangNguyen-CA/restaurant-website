@@ -3,7 +3,7 @@ export interface Action{
 }
 
 export interface UserState{
-    user: Object;
+    user: Object | null;
 }
 
 export interface UserAction extends Action{
