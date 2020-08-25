@@ -11,8 +11,15 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-
 import rootReducer from './reducers/index';
+
+import firebase from './firebase/firebase';
+import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
+import { createFirestoreInstance } from 'redux-firestore';
+
+/*
+ Redux Store 
+*/
 
 const composeEnhancers = compose;
 
@@ -22,14 +29,32 @@ const store = createStore(
   composeEnhancers(applyMiddleware(...middleware))
 );
 
+/*
+  Firebase
+*/
+
+const rrfConfig = {
+  userProfile: 'users',
+  useFirestoreForProfile: true,
+};
+
+const rrfProps = {
+  firebase,
+  config: rrfConfig,
+  dispatch: store.dispatch,
+  createFirestoreInstance,
+};
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router>
-        <ThemeProvider theme={theme}>
-          <App />
-        </ThemeProvider>
-      </Router>
+      <ReactReduxFirebaseProvider {...rrfProps}>
+        <Router>
+          <ThemeProvider theme={theme}>
+            <App />
+          </ThemeProvider>
+        </Router>
+      </ReactReduxFirebaseProvider>
     </Provider>
   </React.StrictMode>,
 
