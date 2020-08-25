@@ -4,6 +4,11 @@ import UserAuth from '../../components/Templates/UserAuth';
 export class Signup extends Component {
   state = {
     controls: {
+      name: {
+        type: 'input',
+        config: {},
+        value: '',
+      },
       email: {
         type: 'input',
         config: {},
@@ -17,7 +22,7 @@ export class Signup extends Component {
     },
   };
 
-  handleOnChange = (e: Event, controlName: 'password' | 'email') => {
+  handleOnChange = (e: Event, controlName: 'password' | 'email' | 'name') => {
     const updatedControls: any = {
       ...this.state.controls,
       [controlName]: {
@@ -32,6 +37,7 @@ export class Signup extends Component {
   handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(
+      this.state.controls.name.value,
       this.state.controls.email.value,
       this.state.controls.password.value
     );
