@@ -8,9 +8,9 @@ const Container = styled.div``;
 const Navlinks = () => {
   return (
     <Container>
-      <Navlink>Home</Navlink>
-      <Navlink>Orders</Navlink>
-      <Navlink>Contact</Navlink>
+      <Navlink to='/'>Home</Navlink>
+      <Navlink to='signin'>Sign In</Navlink>
+      <Navlink to='signup'>Sign up</Navlink>
     </Container>
   );
 };

@@ -1,12 +1,14 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-export default styled.button`
-  border: none;
-  margin-left: 1.5em;
+export default styled(Link)`
+  color: black;
+  text-decoration: none;
   outline: none;
   cursor: pointer;
 
   letter-spacing: 0.1em;
+  margin-left: 1.5em;
 
   font-size: 1rem;
 
