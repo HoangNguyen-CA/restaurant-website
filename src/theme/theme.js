@@ -1,4 +1,6 @@
-const theme = {
+import { createMuiTheme } from "@material-ui/core";
+
+const theme = createMuiTheme({
   colors: {
     primary: '#317589',
     secondary: '#894531',
@@ -13,6 +15,6 @@ const theme = {
     laptop: '(min-width: 1400px)',
     desktop: '(min-width: 1900px)',
   },
-};
+});
 
 export default theme;

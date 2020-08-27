@@ -1,17 +1,18 @@
 import React from 'react';
-import styled from 'styled-components';
-
-import Navlink from './Navlink/Navlink';
-
-const Container = styled.div``;
+import {useHistory} from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 const Navlinks = () => {
+  const history = useHistory();
+  const toHome = () => history.push('/');
+  const toSignIn = () => history.push('/signin');
+  const toSignUp = () => history.push('/signup');
   return (
-    <Container>
-      <Navlink to='/'>Home</Navlink>
-      <Navlink to='signin'>Sign In</Navlink>
-      <Navlink to='signup'>Sign up</Navlink>
-    </Container>
+    <div>
+      <Button onClick={toHome} color="secondary">Home</Button>
+      <Button onClick={toSignIn} color="secondary">Sign In</Button>
+      <Button onClick={toSignUp} color="secondary">Sign up</Button>
+    </div>
   );
 };
 
