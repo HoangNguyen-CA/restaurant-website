@@ -46,14 +46,12 @@ export class Signin extends Component {
 
   render() {
     return (
-      <div>
-        <UserAuth
-          controls={this.state.controls}
-          onChange={this.handleOnChange}
-          handleSubmit={this.handleSubmit}
-          title='Sign In'
-        />
-      </div>
+      <UserAuth
+        controls={this.state.controls}
+        onChange={this.handleOnChange}
+        handleSubmit={this.handleSubmit}
+        title='Sign In'
+      />
     );
   }
 }
