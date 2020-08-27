@@ -18,7 +18,7 @@ const Navlinks = (props: NavProps) => {
   if (props.isAuth) {
     authLinks = (
       <>
-        <Button onClick={props.logout} color='secondary'>
+        <Button onClick={props.logout} color='inherit'>
           Sign Out
         </Button>
       </>
@@ -26,10 +26,10 @@ const Navlinks = (props: NavProps) => {
   } else {
     authLinks = (
       <>
-        <Button onClick={toSignIn} color='secondary'>
+        <Button onClick={toSignIn} color='inherit'>
           Sign In
         </Button>
-        <Button onClick={toSignUp} color='secondary'>
+        <Button onClick={toSignUp} color='inherit'>
           Sign up
         </Button>
         {authLinks}
@@ -38,7 +38,7 @@ const Navlinks = (props: NavProps) => {
   }
   return (
     <div>
-      <Button onClick={toHome} color='secondary'>
+      <Button onClick={toHome} color='inherit'>
         Home
       </Button>
       {authLinks}
