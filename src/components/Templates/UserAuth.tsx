@@ -29,7 +29,7 @@ const UserAuth = ({
       alignItems='center'
       style={{ minHeight: '100vh' }}
     >
-      <form onSubmit={handleSubmit} style={{ width: '90%', maxWidth: '320px' }}>
+      <form onSubmit={handleSubmit} style={{ width: '90%', maxWidth: '16em' }}>
         {error ? <Alert severity='error'>{error}</Alert> : null}
         <Box textAlign='center'>
           <Typography variant='h4' color='primary'>
@@ -37,7 +37,7 @@ const UserAuth = ({
           </Typography>
         </Box>
         <FormInputs controls={controls} onChange={onChange} />
-        <Box mt={3}>
+        <Box mt={4}>
           <Button fullWidth variant='contained' color='primary' type='submit'>
             Submit
           </Button>
