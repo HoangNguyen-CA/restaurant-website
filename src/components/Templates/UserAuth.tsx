@@ -31,9 +31,9 @@ const UserAuth = ({
     >
       <form onSubmit={handleSubmit}>
         {error ? <Alert severity='error'>{error}</Alert> : null}
-        <Typography variant='h5'>{title}</Typography>
+        <Typography variant='h5' color="primary">{title}</Typography>
         <FormInputs controls={controls} onChange={onChange} />
-        <Button type='submit'>Submit</Button>
+        <Button fullWidth variant="contained" color="primary" type='submit'>Submit</Button>
       </form>
     </Grid>
   );
