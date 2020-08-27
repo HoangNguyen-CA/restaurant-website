@@ -25,7 +25,7 @@ const Navbar = (props: NavbarProps) => {
   };
 
   return (
-    <AppBar position='relative'>
+    <AppBar position='absolute'>
       <Toolbar>
         <Typography variant='h4' style={flexGrow}>
           Chipotle

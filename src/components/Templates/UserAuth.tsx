@@ -2,6 +2,7 @@ import React from 'react';
 import FormInputs from '../Forms/FormInputs';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 import Alert from '@material-ui/lab/Alert';
 
 interface AuthProps {
@@ -11,8 +12,6 @@ interface AuthProps {
   title: string;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
-
-//const Form = styled.form``;
 
 const UserAuth = ({
   controls,
