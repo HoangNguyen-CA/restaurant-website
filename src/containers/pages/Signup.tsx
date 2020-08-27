@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import UserAuth from '../../components/Templates/UserAuth';
 import FirebaseContext from '../../firebase/FirebaseContext';
 
-export class Signup extends Component {
+interface myProps {
+  history: any;
+}
+
+export class Signup extends Component<myProps, any> {
   static contextType = FirebaseContext;
 
   state = {
@@ -23,6 +27,7 @@ export class Signup extends Component {
         value: '',
       },
     },
+    error: '',
   };
 
   handleOnChange = (e: Event, controlName: 'Password' | 'Email' | 'Name') => {
@@ -41,17 +46,24 @@ export class Signup extends Component {
     e.preventDefault();
     const firebase = this.context;
 
-    let cred = await firebase.auth.createUserWithEmailAndPassword(
-      this.state.controls.Email.value,
-      this.state.controls.Password.value
-    );
-    console.log(cred);
+    this.setState({ error: '' });
+
+    try {
+      await firebase.auth.createUserWithEmailAndPassword(
+        this.state.controls.Email.value,
+        this.state.controls.Password.value
+      );
+      this.props.history.push('/');
+    } catch (e) {
+      if (e.message) this.setState({ error: e.message });
+    }
   };
 
   render() {
     return (
       <div>
         <UserAuth
+          error={this.state.error}
           controls={this.state.controls}
           onChange={this.handleOnChange}
           handleSubmit={this.handleSubmit}
