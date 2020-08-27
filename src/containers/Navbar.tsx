@@ -1,28 +1,22 @@
 import React from 'react';
-import styled from 'styled-components';
-
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 import Navlinks from '../components/Navlinks/Navlinks';
 
-const Container = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  background-color: #eee;
-  align-items: center;
-  padding: 1em;
-`;
-
-const Brand = styled.h5`
-  font-size: 1.2rem;
-  letter-spacing: 0.05em;
-`;
+//For putting title to left and buttons(links) to right
+const flexGrow = {
+  flexGrow: 1,
+};
 
 const Navbar = () => {
   return (
-    <Container>
-      <Brand>Chipotle</Brand>
-      <Navlinks />
-    </Container>
+    <AppBar position="relative">
+      <Toolbar>
+        <Typography variant="h4" style={flexGrow}>Chipotle</Typography>
+        <Navlinks />
+      </Toolbar>
+    </AppBar>
   );
 };
 
