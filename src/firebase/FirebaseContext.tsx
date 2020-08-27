@@ -9,17 +9,20 @@ export const FirebaseContext = createContext({});
 let firebase = new Firebase();
 
 const Provider = (props: any) => {
+  const { setUser } = props;
+
   useEffect(() => {
     firebase.auth.onAuthStateChanged(async (resUser: Object) => {
       if (resUser) {
         console.log(resUser);
-        props.setUser(resUser);
+        setUser(resUser);
       } else {
         console.log(null);
-        props.setUser(null);
+        setUser(null);
       }
     });
-  }, []);
+  }, [setUser]);
+
   return (
     <FirebaseContext.Provider value={firebase}>
       {props.children}

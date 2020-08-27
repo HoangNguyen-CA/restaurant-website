@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 
 import UserAuth from '../../components/Templates/UserAuth';
+import FirebaseContext from '../../firebase/FirebaseContext';
 
 export class Signin extends Component {
+  static contextType = FirebaseContext;
+
   state = {
     controls: {
       Email: {
@@ -30,8 +33,15 @@ export class Signin extends Component {
     this.setState({ controls: updatedControls });
   };
 
-  handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const firebase = this.context;
+
+    let res = await firebase.auth.signInWithEmailAndPassword(
+      this.state.controls.Email.value,
+      this.state.controls.Password.value
+    );
+    console.log(res);
   };
 
   render() {
