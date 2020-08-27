@@ -15,20 +15,28 @@ const Input = ({ type, label, config, value, onChange }: InputProps) => {
   switch (type) {
     case 'input' as string:
       inputElement = (
-        <TextField label={label + " *"} {...config} value={value} onChange={e => onChange(e)} />
+        <TextField
+          fullWidth
+          label={label + ' *'}
+          {...config}
+          value={value}
+          onChange={(e) => onChange(e)}
+        />
       );
       break;
     default:
       inputElement = (
-        <TextField label={label + " *"} {...config} value={value} onChange={e => onChange(e)} />
+        <TextField
+          fullWidth
+          label={label + ' *'}
+          {...config}
+          value={value}
+          onChange={(e) => onChange(e)}
+        />
       );
   }
 
-  return (
-    <div>
-      {inputElement}
-    </div>
-  );
+  return <div>{inputElement}</div>;
 };
 
 export default Input;

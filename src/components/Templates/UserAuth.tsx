@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Alert from '@material-ui/lab/Alert';
+import Box from '@material-ui/core/Box';
 
 interface AuthProps {
   error?: string | null;
@@ -23,17 +24,24 @@ const UserAuth = ({
   return (
     <Grid
       container
-      spacing={10}
-      direction="column"
-      justify="center"
-      alignItems="center"
-      style={{minHeight: '100vh'}}
+      direction='column'
+      justify='center'
+      alignItems='center'
+      style={{ minHeight: '100vh' }}
     >
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} style={{ width: '90%', maxWidth: '320px' }}>
         {error ? <Alert severity='error'>{error}</Alert> : null}
-        <Typography variant='h5' color="primary">{title}</Typography>
+        <Box textAlign='center'>
+          <Typography variant='h4' color='primary'>
+            {title}
+          </Typography>
+        </Box>
         <FormInputs controls={controls} onChange={onChange} />
-        <Button fullWidth variant="contained" color="primary" type='submit'>Submit</Button>
+        <Box mt={3}>
+          <Button fullWidth variant='contained' color='primary' type='submit'>
+            Submit
+          </Button>
+        </Box>
       </form>
     </Grid>
   );
