@@ -21,12 +21,21 @@ const UserAuth = ({
   error,
 }: AuthProps) => {
   return (
-    <form onSubmit={handleSubmit}>
-      {error ? <Alert severity='error'>{error}</Alert> : null}
-      <Typography variant='h5'>{title}</Typography>
-      <FormInputs controls={controls} onChange={onChange} />
-      <Button type='submit'>Submit</Button>
-    </form>
+    <Grid
+      container
+      spacing={10}
+      direction="column"
+      justify="center"
+      alignItems="center"
+      style={{minHeight: '100vh'}}
+    >
+      <form onSubmit={handleSubmit}>
+        {error ? <Alert severity='error'>{error}</Alert> : null}
+        <Typography variant='h5'>{title}</Typography>
+        <FormInputs controls={controls} onChange={onChange} />
+        <Button type='submit'>Submit</Button>
+      </form>
+    </Grid>
   );
 };
 
