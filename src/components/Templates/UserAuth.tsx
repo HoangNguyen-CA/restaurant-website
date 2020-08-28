@@ -32,8 +32,11 @@ const UserAuth = ({
       <form onSubmit={handleSubmit} style={{ width: '90%', maxWidth: '16em' }}>
         {error ? <Alert severity='error'>{error}</Alert> : null}
         <Box textAlign='center'>
+          <img src={require('../../resources/logo.png')} alt="icon" width="100" height="100" />
+        </Box>
+        <Box textAlign='center' mt={4}>
           <Typography variant='h4' color='primary'>
-            {title}
+              {title}
           </Typography>
         </Box>
         <FormInputs controls={controls} onChange={onChange} />
