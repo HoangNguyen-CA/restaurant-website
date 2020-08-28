@@ -25,7 +25,7 @@ const Input = ({ type, label, config, value, onChange }: InputProps) => {
           label={label + ' *'}
           {...config}
           value={value}
-          type={state ? 'text' : 'password'}
+          type={label !== "Password" ? 'text' : (state ? 'text' : 'password')}
           onChange={(e) => onChange(e)}
           InputProps={{endAdornment:
             <InputAdornment position="end">
