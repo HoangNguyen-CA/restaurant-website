@@ -14,6 +14,13 @@ interface AuthProps {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
+const checkFilled = (controls: any): boolean => {
+  for (let control in controls) {
+    if (!controls[control].value) return false;
+  }
+  return true;
+}
+
 const UserAuth = ({
   controls,
   onChange,
@@ -41,9 +48,15 @@ const UserAuth = ({
         </Box>
         <FormInputs controls={controls} onChange={onChange} />
         <Box mt={4}>
-          <Button fullWidth variant='contained' color='primary' type='submit'>
-            Submit
-          </Button>
+          {checkFilled(controls) ? (
+            <Button fullWidth variant='contained' color='primary' type='submit'>
+              Submit
+            </Button>
+          ) : (
+            <Button disabled fullWidth variant='contained' color='primary' type='submit'>
+              Submit
+            </Button>
+          )}
         </Box>
       </form>
     </Grid>
