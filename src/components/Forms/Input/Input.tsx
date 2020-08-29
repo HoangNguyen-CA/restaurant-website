@@ -33,7 +33,7 @@ const Input = ({ type, label, config, value, onChange }: InputProps) => {
                 <IconButton onClick={handleState}>
                   {state ? <Visibility /> : <VisibilityOff />}
                 </IconButton>
-              ) : null}
+              ) : <div />}
             </InputAdornment> 
           }}
         />
