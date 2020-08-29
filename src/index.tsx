@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 
+import { MuiThemeProvider } from '@material-ui/core';
 import theme from './theme/theme';
-import { ThemeProvider } from 'styled-components';
 
 import { BrowserRouter as Router } from 'react-router-dom';
 
@@ -28,19 +28,15 @@ const store = createStore(
   composeEnhancers(applyMiddleware(...middleware))
 );
 
-/*
-  Firebase
-*/
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <FirebaseProvider>
-        <Router>
-          <ThemeProvider theme={theme}>
+        <MuiThemeProvider theme={theme}>
+          <Router>
             <App />
-          </ThemeProvider>
-        </Router>
+          </Router>
+        </MuiThemeProvider>
       </FirebaseProvider>
     </Provider>
   </React.StrictMode>,
