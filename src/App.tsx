@@ -6,7 +6,7 @@ import Home from './containers/pages/Home';
 import Signin from './containers/pages/Signin';
 import Signup from './containers/pages/Signup';
 
-function App() {
+function App({ children }: any) {
   return (
     <Layout>
       <Switch>

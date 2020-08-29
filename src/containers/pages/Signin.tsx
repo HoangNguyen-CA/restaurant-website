@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import UserAuth from '../../components/Templates/UserAuth';
+import UserAuth from '../Templates/UserAuth';
 import FirebaseContext from '../../firebase/FirebaseContext';
 
 interface myProps {
@@ -22,47 +22,29 @@ export class Signin extends Component<myProps, any> {
         value: '',
       },
     },
-    error: '',
   };
 
-  handleOnChange = (e: Event, controlName: 'Password' | 'Email') => {
-    const updatedControls: any = {
-      ...this.state.controls,
-      [controlName]: {
-        ...this.state.controls[controlName],
-        value: (e.target as HTMLInputElement).value,
-      },
-    };
-
-    this.setState({ controls: updatedControls });
+  handleSetControls = (controls: any) => {
+    this.setState({ controls });
   };
 
-  handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  handleOnSubmit = async () => {
     const firebase = this.context;
-
-    this.setState({ error: '' });
-
-    try {
-      await firebase.auth.signInWithEmailAndPassword(
-        this.state.controls.Email.value,
-        this.state.controls.Password.value
-      );
-      this.props.history.push('/');
-    } catch (e) {
-      if (e.message) this.setState({ error: e.message });
-    }
+    await firebase.auth.signInWithEmailAndPassword(
+      this.state.controls.Email.value,
+      this.state.controls.Password.value
+    );
+    this.props.history.push('/');
   };
 
   render() {
     return (
       <div>
         <UserAuth
-          error={this.state.error}
           controls={this.state.controls}
-          onChange={this.handleOnChange}
-          handleSubmit={this.handleSubmit}
           title='Sign In'
+          setControls={this.handleSetControls}
+          onSubmit={this.handleOnSubmit}
         />
       </div>
     );
