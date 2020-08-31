@@ -1,13 +1,21 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
+import { makeStyles } from '@material-ui/core/styles';
 
+const useStyles = makeStyles({
+  link: {
+    textDecoration: 'none',
+    marginLeft: '3em',
+  },
+});
 interface NavProps {
   isAuth: boolean;
   logout: () => void;
 }
 
 const Navlinks = (props: NavProps) => {
+  const classes = useStyles();
   const history = useHistory();
   const toHome = () => history.push('/');
   const toSignIn = () => history.push('/signin');
@@ -18,29 +26,53 @@ const Navlinks = (props: NavProps) => {
   if (props.isAuth) {
     authLinks = (
       <>
-        <Button onClick={props.logout} color='inherit'>
+        <Link
+          className={classes.link}
+          component='button'
+          onClick={props.logout}
+          color='inherit'
+          variant='button'
+        >
           Sign Out
-        </Button>
+        </Link>
       </>
     );
   } else {
     authLinks = (
       <>
-        <Button onClick={toSignIn} color='inherit'>
+        <Link
+          className={classes.link}
+          component='button'
+          onClick={toSignIn}
+          color='inherit'
+          variant='button'
+        >
           Sign In
-        </Button>
-        <Button onClick={toSignUp} color='inherit'>
-          Sign up
-        </Button>
+        </Link>
+        <Link
+          className={classes.link}
+          component='button'
+          onClick={toSignUp}
+          color='inherit'
+          variant='button'
+        >
+          Sign Up
+        </Link>
         {authLinks}
       </>
     );
   }
   return (
-    <div>
-      <Button onClick={toHome} color='inherit'>
+    <div style={{ marginLeft: 'auto' }}>
+      <Link
+        className={classes.link}
+        component='button'
+        onClick={toHome}
+        color='inherit'
+        variant='button'
+      >
         Home
-      </Button>
+      </Link>
       {authLinks}
     </div>
   );

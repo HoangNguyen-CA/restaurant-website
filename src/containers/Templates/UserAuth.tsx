@@ -55,15 +55,6 @@ const UserAuth = ({ controls, title, setControls, onSubmit }: AuthProps) => {
       style={{ minHeight: '100vh' }}
     >
       <form onSubmit={handleSubmit} style={{ width: '90%', maxWidth: '16em' }}>
-        <Box textAlign='center'>
-          <img
-            src={require('../../resources/logo.png')}
-            alt='icon'
-            width='100'
-            height='100'
-          />
-        </Box>
-
         <Box textAlign='center' mt={4}>
           <Typography variant='h4' color='primary'>
             {title}

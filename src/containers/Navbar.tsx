@@ -1,17 +1,12 @@
 import React, { useContext } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 import Navlinks from '../components/Navlinks/Navlinks';
 
 import { connect } from 'react-redux';
 
 import FirebaseContext from '../firebase/FirebaseContext';
-
-//For putting title to left and buttons(links) to right
-const flexGrow = {
-  flexGrow: 1,
-};
 
 interface NavbarProps {
   isAuthenticated: boolean;
@@ -27,9 +22,14 @@ const Navbar = (props: NavbarProps) => {
   return (
     <AppBar position='sticky'>
       <Toolbar>
-        <Typography variant='h4' style={flexGrow}>
-          Chipotle
-        </Typography>
+        <Box my={1}>
+          <img
+            src={require('../resources/logo.png')}
+            alt='icon'
+            width='80'
+            height='80'
+          />
+        </Box>
         <Navlinks isAuth={props.isAuthenticated} logout={handleLogout} />
       </Toolbar>
     </AppBar>
