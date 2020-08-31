@@ -1,11 +1,11 @@
 import React from 'react';
 import { Typography, Box, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import BG from '../../resources/hero-background.jpg';
 
 const useStyles = makeStyles({
   container: {
-    backgroundImage:
-      "linear-gradient(to top,rgba(255, 255, 255, 0.5) 0% 70%,rgba(255, 255, 255, 0.8)), url('https://www.chipotle.com/content/dam/poc/order/images/promo-banners/fdm/Vertical-Kitchen-Animation-3c.gif')",
+    backgroundImage: `linear-gradient(to right,rgba(255, 255, 255, 0.9) 0% 50%,rgba(255, 255, 255, 0.5)), url(${BG})`,
     backgroundSize: 'cover',
     minHeight: '100vh',
     padding: '1em 5em',
