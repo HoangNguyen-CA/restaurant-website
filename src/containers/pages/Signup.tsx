@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import UserAuth from '../Templates/UserAuth';
 import FirebaseContext from '../../firebase/FirebaseContext';
 
-import { SignUpControls } from '../../interfaces/userAuth';
+import { Controls } from '../../interfaces/userAuth';
 
 type Props = {
   history: any;
 };
 
 type State = {
-  controls: SignUpControls;
+  controls: Controls;
 };
 
 export class Signup extends Component<Props, State> {
@@ -35,7 +35,7 @@ export class Signup extends Component<Props, State> {
     },
   };
 
-  handleSetControls = (controls: SignUpControls) => {
+  handleSetControls = (controls: Controls) => {
     this.setState({ controls });
   };
 
@@ -51,7 +51,7 @@ export class Signup extends Component<Props, State> {
   render() {
     return (
       <div>
-        <UserAuth<SignUpControls>
+        <UserAuth
           controls={this.state.controls}
           title='Sign Up'
           setControls={this.handleSetControls}

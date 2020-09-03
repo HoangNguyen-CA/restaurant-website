@@ -8,37 +8,32 @@ import Box from '@material-ui/core/Box';
 
 import { Controls } from '../../interfaces/userAuth';
 
-const checkFilled = (controls: Controls): boolean => {
+const checkFilled = (controls: Controls) => {
   for (let control in controls) {
     if (!controls[control].value) return false;
   }
   return true;
 };
 
-type Props<CT> = {
-  controls: CT;
+type Props = {
+  controls: Controls;
   title: string;
-  setControls: (control: CT) => void;
+  setControls: (control: Controls) => void;
   onSubmit: () => void;
 };
 
-const UserAuth = <CT extends Controls>({
-  controls,
-  title,
-  setControls,
-  onSubmit,
-}: Props<CT>) => {
+const UserAuth = ({ controls, title, setControls, onSubmit }: Props) => {
   const [error, setError] = useState('');
 
   const handleOnChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     controlName: string
   ) => {
-    const updatedControls: CT = {
+    const updatedControls: Controls = {
       ...controls,
       [controlName]: {
         ...controls[controlName],
-        value: (e.target as HTMLInputElement).value,
+        value: e.target.value,
       },
     };
     setControls(updatedControls);
