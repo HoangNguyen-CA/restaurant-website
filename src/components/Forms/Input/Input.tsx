@@ -9,7 +9,9 @@ type Props = {
   label: string;
   config: {};
   value: string;
-  onChange: (e: any) => void;
+  onChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
 };
 
 const Input = ({ type, label, config, value, onChange }: Props) => {
@@ -26,7 +28,9 @@ const Input = ({ type, label, config, value, onChange }: Props) => {
           {...config}
           value={value}
           type={label !== 'Password' ? 'text' : state ? 'text' : 'password'}
-          onChange={(e) => onChange(e)}
+          onChange={(
+            e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+          ) => onChange(e)}
           InputProps={{
             endAdornment: (
               <InputAdornment position='end'>

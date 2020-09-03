@@ -4,15 +4,18 @@ export interface ControlProp {
   value: string;
 }
 
-interface Controls {
+export type Controls = {
+  [key: string]: ControlProp;
+};
+
+interface AuthControls {
+  [key: string]: ControlProp;
   Email: ControlProp;
   Password: ControlProp;
 }
 
-export interface SignInControls extends Controls {}
+export interface SignInControls extends AuthControls {}
 
-export interface SignUpControls extends Controls {
+export interface SignUpControls extends AuthControls {
   Name: ControlProp;
 }
-
-export type AnyControls = SignInControls | SignUpControls;

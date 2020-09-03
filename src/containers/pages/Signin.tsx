@@ -47,7 +47,7 @@ export class Signin extends Component<Props, State> {
   render() {
     return (
       <div>
-        <UserAuth
+        <UserAuth<SignInControls>
           controls={this.state.controls}
           title='Sign In'
           setControls={this.handleSetControls}

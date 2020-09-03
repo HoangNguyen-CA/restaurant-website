@@ -6,28 +6,35 @@ import Grid from '@material-ui/core/Grid';
 import Alert from '@material-ui/lab/Alert';
 import Box from '@material-ui/core/Box';
 
-const checkFilled = (controls: any): boolean => {
+import { Controls } from '../../interfaces/userAuth';
+
+const checkFilled = (controls: Controls): boolean => {
   for (let control in controls) {
     if (!controls[control].value) return false;
   }
   return true;
 };
 
-type Props = {
-  controls: any;
+type Props<CT> = {
+  controls: CT;
   title: string;
-  setControls: (control: any) => void;
+  setControls: (control: CT) => void;
   onSubmit: () => void;
 };
 
-const UserAuth = ({ controls, title, setControls, onSubmit }: Props) => {
+const UserAuth = <CT extends Controls>({
+  controls,
+  title,
+  setControls,
+  onSubmit,
+}: Props<CT>) => {
   const [error, setError] = useState('');
 
   const handleOnChange = (
-    e: React.FormEvent<HTMLInputElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     controlName: string
   ) => {
-    const updatedControls: any = {
+    const updatedControls: CT = {
       ...controls,
       [controlName]: {
         ...controls[controlName],

@@ -1,11 +1,16 @@
 import React from 'react';
 import StyledInput from './Input/Input';
 
-interface FormProps {
-  controls: any;
-  onChange: (e: React.FormEvent<HTMLInputElement>, controlName: string) => void;
-}
-const FormInputs = ({ controls, onChange }: FormProps) => {
+import { Controls } from '../../interfaces/userAuth';
+
+type Props = {
+  controls: Controls;
+  onChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    controlName: string
+  ) => void;
+};
+const FormInputs = ({ controls, onChange }: Props) => {
   const inputElements = [];
   for (let control in controls) {
     let properties = controls[control];
@@ -16,9 +21,9 @@ const FormInputs = ({ controls, onChange }: FormProps) => {
         label={control}
         config={properties.config}
         value={properties.value}
-        onChange={(e: React.FormEvent<HTMLInputElement>) =>
-          onChange(e, control)
-        }
+        onChange={(
+          e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+        ) => onChange(e, control)}
       />
     );
   }
