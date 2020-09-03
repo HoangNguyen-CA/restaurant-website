@@ -13,17 +13,20 @@ const checkFilled = (controls: any): boolean => {
   return true;
 };
 
-interface AuthProps {
-  controls: { [key: string]: Object };
+type Props = {
+  controls: any;
   title: string;
-  setControls: Function;
+  setControls: (control: any) => void;
   onSubmit: () => void;
-}
+};
 
-const UserAuth = ({ controls, title, setControls, onSubmit }: AuthProps) => {
+const UserAuth = ({ controls, title, setControls, onSubmit }: Props) => {
   const [error, setError] = useState('');
 
-  const handleOnChange = (e: Event, controlName: string) => {
+  const handleOnChange = (
+    e: React.FormEvent<HTMLInputElement>,
+    controlName: string
+  ) => {
     const updatedControls: any = {
       ...controls,
       [controlName]: {

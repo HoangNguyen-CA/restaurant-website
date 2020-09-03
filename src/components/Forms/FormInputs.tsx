@@ -3,7 +3,7 @@ import StyledInput from './Input/Input';
 
 interface FormProps {
   controls: any;
-  onChange: Function;
+  onChange: (e: React.FormEvent<HTMLInputElement>, controlName: string) => void;
 }
 const FormInputs = ({ controls, onChange }: FormProps) => {
   const inputElements = [];
@@ -16,7 +16,9 @@ const FormInputs = ({ controls, onChange }: FormProps) => {
         label={control}
         config={properties.config}
         value={properties.value}
-        onChange={(e: Event) => onChange(e, control)}
+        onChange={(e: React.FormEvent<HTMLInputElement>) =>
+          onChange(e, control)
+        }
       />
     );
   }

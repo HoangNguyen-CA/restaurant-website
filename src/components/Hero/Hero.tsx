@@ -21,6 +21,7 @@ const useStyles = makeStyles({
 });
 
 interface HeroProps {}
+
 const Hero = () => {
   const classes = useStyles();
   return (

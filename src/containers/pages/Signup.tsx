@@ -2,14 +2,20 @@ import React, { Component } from 'react';
 import UserAuth from '../Templates/UserAuth';
 import FirebaseContext from '../../firebase/FirebaseContext';
 
-interface myProps {
-  history: any;
-}
+import { SignUpControls } from '../../interfaces/userAuth';
 
-export class Signup extends Component<myProps, any> {
+type Props = {
+  history: any;
+};
+
+type State = {
+  controls: SignUpControls;
+};
+
+export class Signup extends Component<Props, State> {
   static contextType = FirebaseContext;
 
-  state = {
+  state: State = {
     controls: {
       Name: {
         type: 'input',
@@ -29,7 +35,7 @@ export class Signup extends Component<myProps, any> {
     },
   };
 
-  handleSetControls = (controls: any) => {
+  handleSetControls = (controls: SignUpControls) => {
     this.setState({ controls });
   };
 

@@ -4,18 +4,18 @@ import { InputAdornment, IconButton } from '@material-ui/core';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
-interface InputProps {
+type Props = {
   type: string;
   label: string;
-  config: Object;
+  config: {};
   value: string;
-  onChange: Function;
-}
+  onChange: (e: any) => void;
+};
 
-const Input = ({ type, label, config, value, onChange }: InputProps) => {
+const Input = ({ type, label, config, value, onChange }: Props) => {
   let inputElement = null;
-  const [state, setstate] = React.useState(false);
-  const handleState = () => setstate(!state);
+  const [state, setState] = React.useState(false);
+  const handleState = () => setState(!state);
 
   switch (type) {
     case 'input' as string:
@@ -25,16 +25,20 @@ const Input = ({ type, label, config, value, onChange }: InputProps) => {
           label={label + ' *'}
           {...config}
           value={value}
-          type={label !== "Password" ? 'text' : (state ? 'text' : 'password')}
+          type={label !== 'Password' ? 'text' : state ? 'text' : 'password'}
           onChange={(e) => onChange(e)}
-          InputProps={{endAdornment:
-            <InputAdornment position="end">
-              {label === "Password" ? (
-                <IconButton onClick={handleState}>
-                  {state ? <Visibility /> : <VisibilityOff />}
-                </IconButton>
-              ) : <div />}
-            </InputAdornment> 
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position='end'>
+                {label === 'Password' ? (
+                  <IconButton onClick={handleState}>
+                    {state ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                ) : (
+                  <div />
+                )}
+              </InputAdornment>
+            ),
           }}
         />
       );
@@ -48,14 +52,16 @@ const Input = ({ type, label, config, value, onChange }: InputProps) => {
           value={value}
           type={state ? 'text' : 'password'}
           onChange={(e) => onChange(e)}
-          InputProps={{endAdornment:
-            <InputAdornment position="end">
-              {label === "Password" ? (
-                <IconButton onClick={handleState}>
-                  {state ? <Visibility /> : <VisibilityOff />}
-                </IconButton>
-              ) : null}
-            </InputAdornment> 
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position='end'>
+                {label === 'Password' ? (
+                  <IconButton onClick={handleState}>
+                    {state ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                ) : null}
+              </InputAdornment>
+            ),
           }}
         />
       );
