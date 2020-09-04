@@ -1,14 +1,15 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import Link from '@material-ui/core/Link';
+import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
   link: {
-    textDecoration: 'none',
     marginLeft: '3em',
+    color: 'white',
   },
 });
+
 interface NavProps {
   isAuth: boolean;
   logout: () => void;
@@ -26,53 +27,52 @@ const Navlinks = (props: NavProps) => {
   if (props.isAuth) {
     authLinks = (
       <>
-        <Link
+        <Button
           className={classes.link}
-          component='button'
           onClick={props.logout}
-          color='inherit'
-          variant='button'
+          disableElevation
+          disableRipple
+          size='large'
         >
           Sign Out
-        </Link>
+        </Button>
       </>
     );
   } else {
     authLinks = (
       <>
-        <Link
+        <Button
           className={classes.link}
-          component='button'
           onClick={toSignIn}
-          color='inherit'
-          variant='button'
+          disableElevation
+          disableRipple
+          size='large'
         >
           Sign In
-        </Link>
-        <Link
+        </Button>
+        <Button
           className={classes.link}
-          component='button'
           onClick={toSignUp}
-          color='inherit'
-          variant='button'
+          disableElevation
+          disableRipple
+          size='large'
         >
           Sign Up
-        </Link>
-        {authLinks}
+        </Button>
       </>
     );
   }
   return (
     <div style={{ marginLeft: 'auto' }}>
-      <Link
+      <Button
         className={classes.link}
-        component='button'
         onClick={toHome}
-        color='inherit'
-        variant='button'
+        disableElevation
+        disableRipple
+        size='large'
       >
         Home
-      </Link>
+      </Button>
       {authLinks}
     </div>
   );

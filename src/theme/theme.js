@@ -6,9 +6,12 @@ let theme = createMuiTheme({
       main: '#451400',
     },
     secondary: {
-      main: '#894531',
+      main: '#AC2318',
     },
   },
 });
-theme = responsiveFontSizes(theme, { factor: 2 });
+theme = responsiveFontSizes(theme, {
+  breakpoints: ['sm', 'md', 'lg', 'xl'],
+  factor: 2,
+});
 export default theme;

@@ -61,7 +61,7 @@ const UserAuth = ({ controls, title, setControls, onSubmit }: Props) => {
     >
       <form onSubmit={handleSubmit} style={{ width: '90%', maxWidth: '16em' }}>
         <Box textAlign='center' mt={4}>
-          <Typography variant='h4' color='primary'>
+          <Typography variant='h3' color='primary'>
             {title}
           </Typography>
         </Box>

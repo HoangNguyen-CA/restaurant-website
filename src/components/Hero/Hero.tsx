@@ -13,10 +13,19 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     justifyContent: 'center',
   },
-  title: {},
   contentContainer: {
     width: '50em',
     maxWidth: '100%',
+  },
+
+  title: {
+    textTransform: 'uppercase',
+    fontWeight: 'bold',
+  },
+
+  subtitle: {
+    textTransform: 'uppercase',
+    fontWeight: 'bold',
   },
 });
 
@@ -27,8 +36,11 @@ const Hero = () => {
   return (
     <div className={classes.container}>
       <div className={classes.contentContainer}>
+        <Typography color='primary' variant='h2' className={classes.subtitle}>
+          Make your day
+        </Typography>
         <Typography color='primary' variant='h1' className={classes.title}>
-          Make your day with delivery
+          With Delivery
         </Typography>
         <Box mt={2}>
           <Typography variant='h4' color='primary'>
