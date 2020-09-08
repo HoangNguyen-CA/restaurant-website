@@ -7,8 +7,11 @@ import {
 } from '../../components/OrderBuilder/ingredients';
 
 import { Meat, Rice, Beans, Sides } from '../../components/OrderBuilder/types';
+import Selections from '../../components/OrderBuilder/Selections/Selections';
 
-type Props = {};
+type Props = {
+  history: any;
+};
 
 type State = {
   selectedMeat: Meat | null;
@@ -24,7 +27,14 @@ export class Order extends Component<Props, State> {
     selectedSides: null,
   };
   render() {
-    return <div></div>;
+    return (
+      <div>
+        <Selections<Meat> ingredients={meat} title='Meat'></Selections>
+        <Selections<Rice> ingredients={rice} title='Rice'></Selections>
+        <Selections<Beans> ingredients={beans} title='Beans'></Selections>
+        <Selections<Sides> ingredients={sides} title='Sides'></Selections>
+      </div>
+    );
   }
 }
 

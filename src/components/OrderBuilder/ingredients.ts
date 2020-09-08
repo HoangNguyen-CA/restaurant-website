@@ -22,30 +22,30 @@ import HOT_SALSA from '../../resources/OrderBuilder/sides/tomatillo-red-chili-sa
 import { Meat, Rice, Beans, Sides } from './types';
 
 export const meat = {
-  [Meat.steak]: STEAK,
-  [Meat.chicken]: CHICKEN,
-  [Meat.barbacoa]: BARBACOA,
-  [Meat.carnitas]: CARNITAS,
-  [Meat.softritas]: SOFTRITAS,
+  Steak: { image: STEAK, id: Meat.steak },
+  Chicken: { image: CHICKEN, id: Meat.chicken },
+  Barbacoa: { image: BARBACOA, id: Meat.barbacoa },
+  Carnitas: { image: CARNITAS, id: Meat.carnitas },
+  Softritas: { image: SOFTRITAS, id: Meat.softritas },
 };
 
 export const rice = {
-  [Rice.brownRice]: BROWN_RICE,
-  [Rice.whiteRice]: WHITE_RICE,
+  'Brown Rice': { image: BROWN_RICE, id: Rice.brownRice },
+  'White Rice': { image: WHITE_RICE, id: Rice.whiteRice },
 };
 
 export const beans = {
-  [Beans.blackBeans]: BLACK_BEANS,
-  [Beans.pintoBeans]: PINTO_BEANS,
+  'Black Beans': { image: BLACK_BEANS, id: Beans.blackBeans },
+  'Pinto Beans': { image: PINTO_BEANS, id: Beans.pintoBeans },
 };
 
 export const sides = {
-  [Sides.cheese]: CHEESE,
-  [Sides.sourCream]: SOUR_CREAM,
-  [Sides.fajitaVeg]: FAJITA_VEG,
-  [Sides.mildSalsa]: MILD_SALSA,
-  [Sides.mediumSalsa]: MEDIUM_SALSA,
-  [Sides.hotSalsa]: HOT_SALSA,
-  [Sides.guacamole]: GUACAMOLE,
-  [Sides.quesoBlanco]: QUESO_BLANCO,
+  Cheese: { image: CHEESE, id: Sides.cheese },
+  'Sour Cream': { image: SOUR_CREAM, id: Sides.sourCream },
+  'Fajita Vegetables': { image: FAJITA_VEG, id: Sides.fajitaVeg },
+  'Mild Salsa': { image: MILD_SALSA, id: Sides.mildSalsa },
+  'Medium Salsa': { image: MEDIUM_SALSA, id: Sides.mediumSalsa },
+  'Hot Salsa': { image: HOT_SALSA, id: Sides.hotSalsa },
+  Guacamole: { image: GUACAMOLE, id: Sides.guacamole },
+  'Queso Blanco': { image: QUESO_BLANCO, id: Sides.quesoBlanco },
 };

@@ -26,3 +26,5 @@ export enum Sides {
   guacamole,
   quesoBlanco,
 }
+
+export type Ingredient = Meat | Rice | Beans | Sides;

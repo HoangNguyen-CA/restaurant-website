@@ -1,9 +1,33 @@
 import React from 'react';
+import Selection from '../Selections/Selection';
 
-type Props = {};
+import { Container, Typography, Box, Grid } from '@material-ui/core';
 
-const Selections = (props: Props) => {
-  return <div></div>;
+type Props<T> = {
+  title: string;
+  ingredients: {
+    [name: string]: { image: string; id: T };
+  };
+};
+
+const Selections = <T extends {}>({ ingredients, title }: Props<T>) => {
+  let content = [];
+  for (let i in ingredients) {
+    let id = ingredients[i].id;
+    content.push(
+      <Selection<T> image={ingredients[i].image} id={id} name={i}></Selection>
+    );
+  }
+  return (
+    <Container>
+      <Box my={3}>
+        <Typography variant='h4'>{title}</Typography>
+      </Box>
+      <Grid direction='row' wrap='wrap' spacing={1} item xs={3}>
+        {content}
+      </Grid>
+    </Container>
+  );
 };
 
 export default Selections;
