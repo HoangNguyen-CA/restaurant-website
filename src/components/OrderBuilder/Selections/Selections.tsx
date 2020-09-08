@@ -23,7 +23,13 @@ const Selections = <T extends {}>({ ingredients, title }: Props<T>) => {
       <Box my={3}>
         <Typography variant='h4'>{title}</Typography>
       </Box>
-      <Grid direction='row' wrap='wrap' spacing={1} item xs={3}>
+      <Grid
+        direction='row'
+        spacing={3}
+        justify='flex-start'
+        alignItems='center'
+        container
+      >
         {content}
       </Grid>
     </Container>

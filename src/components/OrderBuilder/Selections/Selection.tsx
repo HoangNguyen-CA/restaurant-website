@@ -1,6 +1,8 @@
 import React from 'react';
-import { Card, CardContent, Typography } from '@material-ui/core/';
+import { Card, CardContent, Typography, Grid } from '@material-ui/core/';
 import { styled } from '@material-ui/core/styles';
+
+const StyledCard = styled(Card)({});
 
 type Props<T> = {
   name: string;
@@ -10,11 +12,13 @@ type Props<T> = {
 
 const Selection = <T extends {}>({ name, image, id }: Props<T>) => {
   return (
-    <Card>
-      <CardContent>
-        <Typography>{name}</Typography>
-      </CardContent>
-    </Card>
+    <Grid item xs={3}>
+      <Card>
+        <CardContent>
+          <Typography>{name}</Typography>
+        </CardContent>
+      </Card>
+    </Grid>
   );
 };
 

@@ -21,6 +21,7 @@ const Navlinks = (props: NavProps) => {
   const toHome = () => history.push('/');
   const toSignIn = () => history.push('/signin');
   const toSignUp = () => history.push('/signup');
+  const toOrderBuilder = () => history.push('/orderbuilder');
 
   let authLinks = null;
 
@@ -72,6 +73,15 @@ const Navlinks = (props: NavProps) => {
         size='large'
       >
         Home
+      </Button>
+      <Button
+        className={classes.link}
+        onClick={toOrderBuilder}
+        disableElevation
+        disableRipple
+        size='large'
+      >
+        Order Builder
       </Button>
       {authLinks}
     </div>
