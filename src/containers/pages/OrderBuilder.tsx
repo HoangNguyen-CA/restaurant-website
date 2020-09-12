@@ -10,6 +10,9 @@ import {
 import { Meat, Rice, Beans, Sides } from '../../components/OrderBuilder/types';
 import Selections from '../../components/OrderBuilder/Selections/Selections';
 
+import { Button, Box } from '@material-ui/core';
+import { styled } from '@material-ui/core/styles';
+
 type Props = {
   history: any;
 };
@@ -29,8 +32,13 @@ type State = {
   };
 };
 
-Object.keys(meat);
-
+const StyledBox = styled(Box)({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: '#F7F2ED',
+});
 export class Order extends Component<Props, State> {
   state: State = {
     selectedMeat: makeDefaultState(meat),
@@ -91,6 +99,11 @@ export class Order extends Component<Props, State> {
           setSelected={this.setSelectedSides}
           selected={this.state.selectedSides}
         ></Selections>
+        <StyledBox py={4} mt={4}>
+          <Button color='primary' size='large' variant='contained'>
+            Add To Cart
+          </Button>
+        </StyledBox>
       </div>
     );
   }
