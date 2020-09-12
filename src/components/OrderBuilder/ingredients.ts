@@ -21,7 +21,7 @@ import HOT_SALSA from '../../resources/OrderBuilder/sides/tomatillo-red-chili-sa
 
 import { Meat, Rice, Beans, Sides } from './types';
 
-export const meat: { [key in Meat]: { image: string; name: string } } = {
+export const meat: { [key in Meat]: any } = {
   [Meat.steak]: { image: STEAK, name: 'Steak' },
   [Meat.chicken]: { image: CHICKEN, name: 'Chicken' },
   [Meat.barbacoa]: { image: BARBACOA, name: 'Barbacoa' },
@@ -29,17 +29,17 @@ export const meat: { [key in Meat]: { image: string; name: string } } = {
   [Meat.softritas]: { image: SOFTRITAS, name: 'Softritas' },
 };
 
-export const rice: { [key in Rice]: { image: string; name: string } } = {
+export const rice: { [key in Rice]: any } = {
   [Rice.brownRice]: { image: BROWN_RICE, name: 'Brown Rice' },
   [Rice.whiteRice]: { image: WHITE_RICE, name: 'White Rice' },
 };
 
-export const beans: { [key in Beans]: { image: string; name: string } } = {
+export const beans: { [key in Beans]: any } = {
   [Beans.blackBeans]: { image: BLACK_BEANS, name: 'Black Beans' },
   [Beans.pintoBeans]: { image: PINTO_BEANS, name: 'Pinto Beans' },
 };
 
-export const sides: { [key in Sides]: { image: string; name: string } } = {
+export const sides: { [key in Sides]: any } = {
   [Sides.cheese]: { image: CHEESE, name: 'Cheese' },
   [Sides.sourCream]: { image: SOUR_CREAM, name: 'Sour Cream' },
   [Sides.fajitaVeg]: { image: FAJITA_VEG, name: 'Fajita Vegetables' },
@@ -50,43 +50,10 @@ export const sides: { [key in Sides]: { image: string; name: string } } = {
   [Sides.quesoBlanco]: { image: QUESO_BLANCO, name: 'Queso Blanco' },
 };
 
-export type AllIngredients =
-  | typeof meat
-  | typeof rice
-  | typeof beans
-  | typeof sides;
-
-export const makeDefaultMeat = () => {
-  return {
-    [Meat.steak]: false,
-    [Meat.chicken]: false,
-    [Meat.barbacoa]: false,
-    [Meat.carnitas]: false,
-    [Meat.softritas]: false,
-  };
+export const makeDefaultState = <T>(ing: T): T => {
+  let obj: any = {};
+  for (let i in ing) {
+    obj[i] = false;
+  }
+  return obj as T;
 };
-
-export const makeDefaultRice = () => {
-  return {
-    [Rice.brownRice]: false,
-    [Rice.whiteRice]: false,
-  };
-};
-
-export const makeDefaultBeans = () => {
-  return {
-    [Beans.blackBeans]: false,
-    [Beans.pintoBeans]: false,
-  };
-};
-
-export const makeDefaultSides = () => ({
-  [Sides.cheese]: false,
-  [Sides.sourCream]: false,
-  [Sides.fajitaVeg]: false,
-  [Sides.mildSalsa]: false,
-  [Sides.mediumSalsa]: false,
-  [Sides.hotSalsa]: false,
-  [Sides.guacamole]: false,
-  [Sides.quesoBlanco]: false,
-});

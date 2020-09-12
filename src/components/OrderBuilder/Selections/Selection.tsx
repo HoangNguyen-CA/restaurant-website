@@ -13,8 +13,11 @@ const StyledCard = styled(Card)({
 });
 
 type overlayProps = { noBackground?: boolean; show: boolean; color: string };
-const Overlay = styled(({ show, color, ...other }) => <div {...other}></div>)({
+const Overlay = styled(({ show, color, noBackground, ...other }) => (
+  <div {...other}></div>
+))({
   position: 'absolute',
+  padding: '1em',
   top: '0',
   right: '0',
   left: '0',
@@ -27,8 +30,13 @@ const Overlay = styled(({ show, color, ...other }) => <div {...other}></div>)({
   cursor: 'pointer',
 
   display: 'flex',
-  justifyContent: 'center',
+  flexDirection: 'column',
+  justifyContent: 'flex-end',
   alignItems: 'center',
+});
+
+const StyledCheckIcon = styled(CheckCircleIcon)({
+  filter: 'drop-shadow(1px 1px 8px rgba(255, 255, 255, 0.7))',
 });
 
 type Props<T> = {
@@ -75,7 +83,7 @@ const Selection = <T extends {}>({
           noBackground
         >
           {selected ? (
-            <CheckCircleIcon color='primary' fontSize='large'></CheckCircleIcon>
+            <StyledCheckIcon color='primary' fontSize='large'></StyledCheckIcon>
           ) : null}
         </Overlay>
       </StyledCard>

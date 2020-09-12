@@ -4,10 +4,7 @@ import {
   rice,
   beans,
   sides,
-  makeDefaultBeans,
-  makeDefaultMeat,
-  makeDefaultRice,
-  makeDefaultSides,
+  makeDefaultState,
 } from '../../components/OrderBuilder/ingredients';
 
 import { Meat, Rice, Beans, Sides } from '../../components/OrderBuilder/types';
@@ -36,27 +33,27 @@ Object.keys(meat);
 
 export class Order extends Component<Props, State> {
   state: State = {
-    selectedMeat: makeDefaultMeat(),
-    selectedRice: makeDefaultRice(),
-    selectedBeans: makeDefaultBeans(),
-    selectedSides: makeDefaultSides(),
+    selectedMeat: makeDefaultState(meat),
+    selectedRice: makeDefaultState(rice),
+    selectedBeans: makeDefaultState(beans),
+    selectedSides: makeDefaultState(sides),
   };
 
   setSelectedMeat = (id: Meat) => {
     let temp = this.state.selectedMeat[id];
-    let updatedMeat = makeDefaultMeat();
+    let updatedMeat = makeDefaultState(meat);
     updatedMeat[id] = !temp;
     this.setState({ selectedMeat: updatedMeat });
   };
   setSelectedRice = (id: Rice) => {
     let temp = this.state.selectedRice[id];
-    let updatedRice = makeDefaultRice();
+    let updatedRice = makeDefaultState(rice);
     updatedRice[id] = !temp;
     this.setState({ selectedRice: updatedRice });
   };
   setSelectedBeans = (id: Beans) => {
     let temp = this.state.selectedBeans[id];
-    let updatedBeans = makeDefaultBeans();
+    let updatedBeans = makeDefaultState(beans);
     updatedBeans[id] = !temp;
     this.setState({ selectedBeans: updatedBeans });
   };
