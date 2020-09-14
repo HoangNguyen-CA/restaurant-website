@@ -27,6 +27,7 @@ const Selections = <T extends {}>({
     let ing = ingredients[i];
     content.push(
       <Selection<T>
+        key={i}
         image={ing.image}
         name={ing.name}
         id={(i as unknown) as T}

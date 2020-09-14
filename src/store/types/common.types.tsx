@@ -1,11 +1,8 @@
-export interface Action{
-    type: string;
+export interface Action {
+  type: string;
+  payload: any;
 }
 
-export interface UserState{
-    user: Object | null;
-}
-
-export interface UserAction extends Action{
-    payload: any;
+export interface CartItem {
+  id: string;
 }

@@ -72,6 +72,13 @@ export class Order extends Component<Props, State> {
     this.setState({ selectedSides: updatedSides });
   };
 
+  handleSubmit = () => {
+    console.log(this.state.selectedMeat);
+    console.log(this.state.selectedRice);
+    console.log(this.state.selectedBeans);
+    console.log(this.state.selectedSides);
+  };
+
   render() {
     return (
       <div>
@@ -100,7 +107,12 @@ export class Order extends Component<Props, State> {
           selected={this.state.selectedSides}
         ></Selections>
         <StyledBox py={4} mt={4}>
-          <Button color='primary' size='large' variant='contained'>
+          <Button
+            color='primary'
+            size='large'
+            variant='contained'
+            onClick={this.handleSubmit}
+          >
             Add To Cart
           </Button>
         </StyledBox>
