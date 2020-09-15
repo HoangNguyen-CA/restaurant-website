@@ -10,8 +10,9 @@ import {
 import { Meat, Rice, Beans, Sides } from '../../components/OrderBuilder/types';
 import Selections from '../../components/OrderBuilder/Selections/Selections';
 
-import { Button, Box } from '@material-ui/core';
+import { Button, Box, Container } from '@material-ui/core';
 import { styled } from '@material-ui/core/styles';
+import Alert from '@material-ui/lab/Alert';
 
 import { connect } from 'react-redux';
 import { addItem } from '../../store/actions/cartActions';
@@ -46,10 +47,7 @@ type State = {
 
 const StyledBox = styled(Box)({
   display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
   justifyContent: 'center',
-  backgroundColor: '#F7F2ED',
 });
 
 const getSelectedIng = (obj: any) => {
@@ -105,51 +103,71 @@ export class OrderBuilder extends Component<Props, State> {
   };
 
   handleSubmit = () => {
-    this.props.addItem({
+    this.setState({ error: '' });
+
+    let order: Order = {
       meat: getSelectedIng(this.state.selectedMeat),
       rice: getSelectedIng(this.state.selectedRice),
       beans: getSelectedIng(this.state.selectedBeans),
       sides: getSelectedIngArr(this.state.selectedSides),
-    });
+    };
+    if (order.meat === '') {
+      this.setState({ error: 'Error: Meat not selected' });
+    } else if (order.rice === '') {
+      this.setState({ error: 'Error: Rice not selected' });
+    } else if (order.beans === '') {
+      this.setState({ error: 'Error: Beans not selected' });
+    } else {
+      this.props.addItem(order);
+    }
   };
 
   render() {
     return (
       <div>
-        <Selections<Meat>
-          ingredients={meat}
-          title='Meat'
-          setSelected={this.setSelectedMeat}
-          selected={this.state.selectedMeat}
-        ></Selections>
-        <Selections<Rice>
-          ingredients={rice}
-          title='Rice'
-          setSelected={this.setSelectedRice}
-          selected={this.state.selectedRice}
-        ></Selections>
-        <Selections<Beans>
-          ingredients={beans}
-          title='Beans'
-          setSelected={this.setSelectedBeans}
-          selected={this.state.selectedBeans}
-        ></Selections>
-        <Selections<Sides>
-          ingredients={sides}
-          title='Sides'
-          setSelected={this.setSelectedSides}
-          selected={this.state.selectedSides}
-        ></Selections>
-        <StyledBox py={4} mt={4}>
-          <Button
-            color='primary'
-            size='large'
-            variant='contained'
-            onClick={this.handleSubmit}
-          >
-            Add To Cart
-          </Button>
-        </StyledBox>
+        <Container maxWidth='lg'>
+          <Selections<Meat>
+            ingredients={meat}
+            title='Meat'
+            setSelected={this.setSelectedMeat}
+            selected={this.state.selectedMeat}
+          ></Selections>
+          <Selections<Rice>
+            ingredients={rice}
+            title='Rice'
+            setSelected={this.setSelectedRice}
+            selected={this.state.selectedRice}
+          ></Selections>
+          <Selections<Beans>
+            ingredients={beans}
+            title='Beans'
+            setSelected={this.setSelectedBeans}
+            selected={this.state.selectedBeans}
+          ></Selections>
+          <Selections<Sides>
+            ingredients={sides}
+            title='Sides'
+            setSelected={this.setSelectedSides}
+            selected={this.state.selectedSides}
+          ></Selections>
+          <Box my={4}>
+            {this.state.error ? (
+              <Alert severity='error' style={{ textAlign: 'center' }}>
+                {this.state.error}
+              </Alert>
+            ) : null}
+          </Box>
+          <StyledBox mb={6} mt={6}>
+            <Button
+              color='primary'
+              size='large'
+              variant='contained'
+              onClick={this.handleSubmit}
+            >
+              Add To Cart
+            </Button>
+          </StyledBox>
+        </Container>
       </div>
     );
   }

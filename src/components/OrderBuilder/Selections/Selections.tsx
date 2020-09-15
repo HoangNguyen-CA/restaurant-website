@@ -1,7 +1,7 @@
 import React from 'react';
 import Selection from '../Selections/Selection';
 
-import { Container, Typography, Box, Grid } from '@material-ui/core';
+import { Typography, Box, Grid } from '@material-ui/core';
 
 /*
 
@@ -37,7 +37,7 @@ const Selections = <T extends {}>({
     );
   }
   return (
-    <Container>
+    <>
       <Box my={3}>
         <Typography variant='h4'>{title}</Typography>
       </Box>
@@ -50,7 +50,7 @@ const Selections = <T extends {}>({
       >
         {content}
       </Grid>
-    </Container>
+    </>
   );
 };
 
