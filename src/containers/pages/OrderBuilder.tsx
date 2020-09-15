@@ -13,8 +13,19 @@ import Selections from '../../components/OrderBuilder/Selections/Selections';
 import { Button, Box } from '@material-ui/core';
 import { styled } from '@material-ui/core/styles';
 
+import { connect } from 'react-redux';
+import { addItem } from '../../store/actions/cartActions';
+
+interface Order {
+  meat: string;
+  rice: string;
+  beans: string;
+  sides: string[];
+}
+
 type Props = {
   history: any;
+  addItem: (order: Order) => void;
 };
 
 type State = {
@@ -30,6 +41,7 @@ type State = {
   selectedSides: {
     [key in Sides]: boolean;
   };
+  error: string;
 };
 
 const StyledBox = styled(Box)({
@@ -39,12 +51,32 @@ const StyledBox = styled(Box)({
   justifyContent: 'center',
   backgroundColor: '#F7F2ED',
 });
-export class Order extends Component<Props, State> {
+
+const getSelectedIng = (obj: any) => {
+  for (let i in obj) {
+    if (obj[i] === true) {
+      return i;
+    }
+  }
+  return '';
+};
+
+const getSelectedIngArr = (obj: any) => {
+  const arr: string[] = [];
+  for (let i in obj) {
+    if (obj[i] === true) {
+      arr.push(i);
+    }
+  }
+  return arr;
+};
+export class OrderBuilder extends Component<Props, State> {
   state: State = {
     selectedMeat: makeDefaultState(meat),
     selectedRice: makeDefaultState(rice),
     selectedBeans: makeDefaultState(beans),
     selectedSides: makeDefaultState(sides),
+    error: '',
   };
 
   setSelectedMeat = (id: Meat) => {
@@ -73,10 +105,12 @@ export class Order extends Component<Props, State> {
   };
 
   handleSubmit = () => {
-    console.log(this.state.selectedMeat);
-    console.log(this.state.selectedRice);
-    console.log(this.state.selectedBeans);
-    console.log(this.state.selectedSides);
+    this.props.addItem({
+      meat: getSelectedIng(this.state.selectedMeat),
+      rice: getSelectedIng(this.state.selectedRice),
+      beans: getSelectedIng(this.state.selectedBeans),
+      sides: getSelectedIngArr(this.state.selectedSides),
+    });
   };
 
   render() {
@@ -121,4 +155,10 @@ export class Order extends Component<Props, State> {
   }
 }
 
-export default Order;
+const mapStateToProps = (state: any) => ({});
+
+const mapDispatchToProps = {
+  addItem: (order: Order) => addItem(order),
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(OrderBuilder);

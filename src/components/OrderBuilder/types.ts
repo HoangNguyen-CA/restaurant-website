@@ -1,28 +1,28 @@
 export enum Meat {
-  steak,
-  chicken,
-  barbacoa,
-  carnitas,
-  softritas,
+  steak = 'steak',
+  chicken = 'chicken',
+  barbacoa = 'barbacoa',
+  carnitas = 'carnitas',
+  softritas = 'softritas',
 }
 
 export enum Rice {
-  whiteRice,
-  brownRice,
+  whiteRice = 'white rice',
+  brownRice = 'brown rice',
 }
 
 export enum Beans {
-  blackBeans,
-  pintoBeans,
+  blackBeans = 'black beans',
+  pintoBeans = 'pinto beans',
 }
 
 export enum Sides {
-  cheese,
-  sourCream,
-  fajitaVeg,
-  mildSalsa,
-  mediumSalsa,
-  hotSalsa,
-  guacamole,
-  quesoBlanco,
+  cheese = 'cheese',
+  sourCream = 'sour cream',
+  fajitaVeg = 'fajita vegetables',
+  mildSalsa = 'mild salsa',
+  mediumSalsa = 'medium salsa',
+  hotSalsa = 'hot salsa',
+  guacamole = 'guacamole',
+  quesoBlanco = 'queso blanco',
 }
