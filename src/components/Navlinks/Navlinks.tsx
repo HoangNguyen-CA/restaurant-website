@@ -21,6 +21,7 @@ const Navlinks = (props: NavProps) => {
   const toHome = () => history.push('/');
   const toSignIn = () => history.push('/signin');
   const toSignUp = () => history.push('/signup');
+  const toCart = () => history.push('/cart');
   const toOrderBuilder = () => history.push('/orderbuilder');
 
   let authLinks = null;
@@ -28,6 +29,15 @@ const Navlinks = (props: NavProps) => {
   if (props.isAuth) {
     authLinks = (
       <>
+        <Button
+          className={classes.link}
+          onClick={toCart}
+          disableElevation
+          disableRipple
+          size='large'
+        >
+          Cart
+        </Button>
         <Button
           className={classes.link}
           onClick={props.logout}

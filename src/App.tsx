@@ -6,6 +6,7 @@ import Home from './containers/pages/Home';
 import Signin from './containers/pages/Signin';
 import Signup from './containers/pages/Signup';
 import OrderBuilder from './containers/pages/OrderBuilder';
+import Cart from './containers/pages/Cart';
 
 function App({ children }: any) {
   return (
@@ -14,6 +15,7 @@ function App({ children }: any) {
         <Route exact path='/signin' component={Signin}></Route>
         <Route exact path='/signup' component={Signup}></Route>
         <Route exact path='/orderbuilder' component={OrderBuilder}></Route>
+        <Route exact path='/cart' component={Cart}></Route>
         <Route path='/' component={Home}></Route>
       </Switch>
     </Layout>
