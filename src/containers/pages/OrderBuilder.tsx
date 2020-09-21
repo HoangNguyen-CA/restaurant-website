@@ -124,51 +124,49 @@ export class OrderBuilder extends Component<Props, State> {
 
   render() {
     return (
-      <div>
-        <Container maxWidth='lg'>
-          <Selections<Meat>
-            ingredients={meat}
-            title='Meat'
-            setSelected={this.setSelectedMeat}
-            selected={this.state.selectedMeat}
-          ></Selections>
-          <Selections<Rice>
-            ingredients={rice}
-            title='Rice'
-            setSelected={this.setSelectedRice}
-            selected={this.state.selectedRice}
-          ></Selections>
-          <Selections<Beans>
-            ingredients={beans}
-            title='Beans'
-            setSelected={this.setSelectedBeans}
-            selected={this.state.selectedBeans}
-          ></Selections>
-          <Selections<Sides>
-            ingredients={sides}
-            title='Sides'
-            setSelected={this.setSelectedSides}
-            selected={this.state.selectedSides}
-          ></Selections>
-          <Box my={4}>
-            {this.state.error ? (
-              <Alert severity='error' style={{ textAlign: 'center' }}>
-                {this.state.error}
-              </Alert>
-            ) : null}
-          </Box>
-          <StyledBox mb={6} mt={6}>
-            <Button
-              color='primary'
-              size='large'
-              variant='contained'
-              onClick={this.handleSubmit}
-            >
-              Add To Cart
-            </Button>
-          </StyledBox>
-        </Container>
-      </div>
+      <Container maxWidth='lg'>
+        <Selections<Meat>
+          ingredients={meat}
+          title='Meat'
+          setSelected={this.setSelectedMeat}
+          selected={this.state.selectedMeat}
+        ></Selections>
+        <Selections<Rice>
+          ingredients={rice}
+          title='Rice'
+          setSelected={this.setSelectedRice}
+          selected={this.state.selectedRice}
+        ></Selections>
+        <Selections<Beans>
+          ingredients={beans}
+          title='Beans'
+          setSelected={this.setSelectedBeans}
+          selected={this.state.selectedBeans}
+        ></Selections>
+        <Selections<Sides>
+          ingredients={sides}
+          title='Sides'
+          setSelected={this.setSelectedSides}
+          selected={this.state.selectedSides}
+        ></Selections>
+        <Box my={4}>
+          {this.state.error ? (
+            <Alert severity='error' style={{ textAlign: 'center' }}>
+              {this.state.error}
+            </Alert>
+          ) : null}
+        </Box>
+        <StyledBox mb={6} mt={6}>
+          <Button
+            color='primary'
+            size='large'
+            variant='contained'
+            onClick={this.handleSubmit}
+          >
+            Add To Cart
+          </Button>
+        </StyledBox>
+      </Container>
     );
   }
 }

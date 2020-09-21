@@ -6,6 +6,7 @@ export interface Action {
 }
 
 export interface CartItem {
+  name?: string;
   id: string;
   meat: string;
   rice: string;

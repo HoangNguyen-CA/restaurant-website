@@ -1,14 +1,44 @@
 import { Action } from '../types/common.types';
 import { ADD_CART, REMOVE_CART } from '../actions/actionTypes';
+import { CartItem } from '../types/common.types';
 
 interface CartState {
-  cart: any[];
+  cart: CartItem[];
 }
 
 interface CartAction extends Action {}
 
 const initialState: CartState = {
-  cart: [],
+  cart: [
+    {
+      id: '123',
+      meat: 'chicken',
+      rice: 'brown',
+      beans: 'black',
+      sides: ['side1', 'side2'],
+    },
+    {
+      id: '123',
+      meat: 'chicken',
+      rice: 'brown',
+      beans: 'black',
+      sides: ['side1', 'side2'],
+    },
+    {
+      id: '123',
+      meat: 'chicken',
+      rice: 'brown',
+      beans: 'black',
+      sides: ['side1', 'side2'],
+    },
+    {
+      id: '123',
+      meat: 'chicken',
+      rice: 'brown',
+      beans: 'black',
+      sides: ['side1', 'side2'],
+    },
+  ],
 };
 
 export const cartReducer = (
